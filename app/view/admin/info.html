@@ -1,0 +1,159 @@
+<div class="panel admin-panel">
+  <div class="panel-head"><strong><span class="icon-pencil-square-o"></span> 网站信息</strong></div>
+  <div class="body-content">
+    <form method="post" class="form-x" action="index.php?m=admin&c=index&a=setinfo">
+      <div class="form-group">
+        <div class="label">
+          <label>网站标题：</label>
+        </div>
+        <div class="field">
+          <input type="text" class="input" name="stitle" value="<?php echo $info['stitle']?>" />
+          <div class="tips"></div>
+        </div>
+      </div>
+      <div class="form-group">
+        <div class="label">
+          <label>网站LOGO：</label>
+        </div>
+        <div class="field">
+          <input type="text" id="slogo" name="slogo" class="input tips" style="width:25%; float:left;" value="<?php echo $info['slogo']?>" data-toggle="hover" data-place="right" data-image=""  />
+          <div class="button bg-blue margin-left" id="image1" style="position: relative">
+            + 浏览上传
+            <input type="file" style="width:100px;height:30px;opacity: 0;position: absolute;top:0;left:0" id="files">
+          </div>
+          <script>
+            var slogo = document.querySelector('#slogo');
+            var files = document.querySelector('#files');
+            files.onchange = function () {
+                var f = this.files[0];
+                var fd = new FormData();
+                fd.append('file',f);
+                var xhr = new XMLHttpRequest();
+                xhr.open('post','index.php?m=admin&c=index&a=upLogo');
+                xhr.send(fd);
+                xhr.onreadystatechange = function () {
+                    if(xhr.readyState==4&&xhr.status==200){
+                        slogo.value = xhr.response;
+                        slogo.setAttribute('data-image',xhr.response);
+                    }
+                }
+            }
+          </script>
+        </div>
+      </div>
+      <div class="form-group">
+        <div class="label">
+          <label>网站域名：</label>
+        </div>
+        <div class="field">
+          <input type="text" class="input" name="shost" value="<?php echo $info['shost']?>" />
+        </div>
+      </div>
+
+      <div class="form-group">
+        <div class="label">
+          <label>网站关键字：</label>
+        </div>
+        <div class="field">
+          <textarea class="input" name="skeywords" style="height:80px"><?php echo $info['skeywords']?></textarea>
+          <div class="tips"></div>
+        </div>
+      </div>
+      <div class="form-group">
+        <div class="label">
+          <label>网站描述：</label>
+        </div>
+        <div class="field">
+          <textarea class="input" name="sdescription"><?php echo $info['sdescription']?></textarea>
+          <div class="tips"></div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <div class="label">
+          <label>手机：</label>
+        </div>
+        <div class="field">
+          <input type="text" class="input" name="sphone" value="<?php echo $info['sphone']?>" />
+          <div class="tips"></div>
+        </div>
+      </div>
+      <div class="form-group">
+        <div class="label">
+          <label>电话：</label>
+        </div>
+        <div class="field">
+          <input type="text" class="input" name="stel" value="<?php echo $info['stel']?>" />
+          <div class="tips"></div>
+        </div>
+      </div>
+
+
+      <div class="form-group">
+        <div class="label">
+          <label>QQ：</label>
+        </div>
+        <div class="field">
+          <input type="text" class="input" name="sqq" value="<?php echo $info['sqq']?>" />
+          <div class="tips"></div>
+        </div>
+      </div>
+
+     
+      <div class="form-group">
+        <div class="label">
+          <label>Email：</label>
+        </div>
+        <div class="field">
+          <input type="text" class="input" name="semail" value="<?php echo $info['semail']?>" />
+          <div class="tips"></div>
+        </div>
+      </div>
+      <div class="form-group">
+        <div class="label">
+          <label>地址：</label>
+        </div>
+        <div class="field">
+          <input type="text" class="input" name="saddress" value="<?php echo $info['saddress']?>" />
+          <div class="tips"></div>
+        </div>
+      </div>
+      <div class="form-group">
+        <div class="label">
+          <label>备案号：</label>
+        </div>
+        <div class="field">
+          <input type="text" class="input" name="srecord" value="<?php echo $info['srecord']?>" />
+          <div class="tips"></div>
+        </div>
+      </div>
+      <div class="form-group">
+        <div class="label">
+          <label>版权信息：</label>
+        </div>
+        <div class="field">
+          <textarea name="scopyright" class="input" style="height:120px;"><?php echo $info['scopyright']?></textarea>
+          <div class="tips"></div>
+        </div>
+      </div>
+      <div class="form-group">
+        <div class="label">
+          <label>统计代码：</label>
+        </div>
+        <div class="field">
+          <textarea name="count_code" class="input" style="height:120px;"><?php echo $info['count_code']?></textarea>
+          <div class="tips"></div>
+        </div>
+      </div>
+      <div class="form-group">
+        <div class="label">
+          <label></label>
+        </div>
+        <div class="field">
+          <button class="button bg-main icon-check-square-o" type="submit"> 提交</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+</body></html>
